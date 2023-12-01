@@ -166,5 +166,50 @@ son.asking()
 | tiff | TIFF(ティーアイエフエフ) | 画像を表すバイナリファイル。<br>圧縮されていない画像ファイル。印刷などに使われている。|
 | ico | ICO(アイコン) | 画像を表すバイナリファイル。<br>Windowsでのアプリアイコンなど小さく表示される画像に使用される。|
 
-
 動画系の拡張子などまだまだありますが、Webページ作成に出てくる可能性が低いので、もし出てきたら都度調べてください。
+
+#### ファイル形式毎のデータ構造の書き方
+前項で説明したデータ構造と、ファイル形式を合わせた話になります。テキストファイルの表にあったXML、CSV、JSONは、それぞれデータ構造を表すために考案されました。  
+ここでは、この3つのファイル形式で前項の`jibun`オブジェクトを表すとどうなるかを記述します。
+
+##### XML
+```
+<JIBUN>
+  <NAME>〇〇</NAME>
+  <AGE>33</AGE>
+  <ADDRESS>xxxxxxxxxxx</ADDRESS>
+  <SEX>female</SEX>
+  <FAMILY>
+    <FATHER>〇〇</FATHER>
+    <BROTHER>〇〇</BROTHER>
+  </FAMILY>
+  <ASKING type="function">
+    "私の名前は" + name + "で、年齢は" + age + "です。"
+  </ASKING>
+</JIBUN>
+```
+
+##### CSV
+```
+jibun.csv
+name,age,address,sex,father,brother
+〇〇,33,xxxxxxxxx,female,〇〇,〇〇
+```
+
+##### JSON
+```
+jibun { 
+    name : 〇〇
+    age : 33
+    address : xxxxxxxx
+    sex : female
+    family : {
+        father : 〇〇
+        brother : 〇〇
+    }
+
+    asking : function{
+        "私の名前は" + name + "で、年齢は" + age + "です。"
+    }
+}
+```
