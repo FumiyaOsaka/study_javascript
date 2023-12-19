@@ -708,3 +708,58 @@ console.log("====================================");
 console.log("forEach文 end");
 console.log("====================================");
 ```
+
+## J-6 - 関数の書き方 -
+ファイル名：j-6.html
+```html:j-6.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript J-6</title>
+    <script>
+      const pi=3.14;
+
+      // 通常の関数宣言
+      function calc_area(r){
+        area = r * r * pi;
+        return area;
+      }
+
+      // 無名関数の書き方
+      calc_length = function(r){
+        length = 2 * pi * r;
+        return length;
+      }
+
+      // アロー関数の書き方
+      print = (r,area,length) => {
+        return `半径${r}cmの円の面積は${area}cm^2、円周の長さは${length}cm`;
+      }
+
+      call_cirlce_info = () => {
+        // テキストエリアに入力されている値を取得
+        r = document.getElementById("hankei").value;
+
+        // 値が取得できなかった場合、初期値を設定
+        if(!r){
+          r = 1;
+        }
+
+        // 関数の実行1
+        area = calc_area(r);
+
+        // 関数の実行2
+        alert(print(r,area,calc_length(r)));
+      }
+  </script>
+  </head>
+  <body>
+    <p>
+      <label for="hankei">円の半径を入力してください。</label>
+      <input type="text" id="hankei" />
+    </p>
+    <button type="button" onclick="call_cirlce_info()">確認</button>
+  </body>
+</html>
+```
